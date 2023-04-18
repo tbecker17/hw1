@@ -218,6 +218,11 @@ VALUES
 -- The SQL statement for the movies output
 -- TODO!
 
+SELECT title, year, rating, name AS studio
+FROM movies
+JOIN studios ON movies.studio_id = studios.id
+;
+
 -- Prints a header for the cast output
 .print ""
 .print "Top Cast"
