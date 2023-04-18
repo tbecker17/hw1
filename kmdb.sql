@@ -18,11 +18,15 @@
 --
 -- - As a guest, I want to see a list of movies with the title, year released,
 --   MPAA rating, and studio information.
+--      Create a table called movies with each of these columns
 -- - As a guest, I want to see the movies which a single studio has produced.
+--      Create a studios table
 -- - As a guest, I want to see each movie's cast including each actor's
 --   name and the name of the character they portray.
+--      Create a characters table as cast screws with code
 -- - As a guest, I want to see the movies which a single actor has acted in.
 -- * Note: The "guest" user role represents the experience prior to logging-in
+--      Create an actors table
 --   to an app and typically does not have a corresponding database table.
 
 
@@ -30,10 +34,16 @@
 -- 
 -- There are three deliverables for this assignment, all delivered via
 -- this file and submitted via GitHub and Canvas:
+
+-- PART 1
 -- - A domain model, implemented via CREATE TABLE statements for each
 --   model/table. Also, include DROP TABLE IF EXISTS statements for each
 --   table, so that each run of this script starts with a blank database.
+
+-- PART 2
 -- - Insertion of "Batman" sample data into tables.
+
+-- PART 3 REPORT
 -- - Selection of data, so that something similar to the sample "report"
 --   below can be achieved.
 
@@ -45,17 +55,21 @@
 --   Hint #1: It's not just a single table that contains everything in the 
 --   expected output. There are multiple real world entities and
 --   relationships including at least one many-to-many relationship.
+
 --   Hint #2: Do NOT name one of your models/tables “cast” or “casts”; this 
 --   is a reserved word in sqlite and will break your database! Instead, 
 --   think of a better word to describe this concept; i.e. the relationship 
 --   between an actor and the movie in which they play a part.
+
 -- 2. Execution of the domain model (CREATE TABLE) - 4 points
 -- - Follow best practices for table and column names
 -- - Use correct data column types (i.e. TEXT/INTEGER)
 -- - Use of the `model_id` naming convention for foreign key columns
+
 -- 3. Insertion of data (INSERT statements) - 4 points
 -- - Insert data into all the tables you've created
 -- - It actually works, i.e. proper INSERT syntax
+
 -- 4. "The report" (SELECT statements) - 6 points
 -- - Write 2 `SELECT` statements to produce something similar to the
 --   sample output below - 1 for movies and 1 for cast. You will need
@@ -106,10 +120,10 @@
 -- Drop existing tables, so you'll start fresh each time this script is run.
 -- TODO!
 
-DROP TABLE IF EXISTS characters;
 DROP TABLE IF EXISTS actors;
 DROP TABLE IF EXISTS movies;
 DROP TABLE IF EXISTS studios;
+DROP TABLE IF EXISTS characters;
 
 -- Create new tables, according to your domain model
 -- TODO!
@@ -218,7 +232,7 @@ VALUES
 -- The SQL statement for the movies output
 -- TODO!
 
-SELECT title, year, rating, name AS studio
+SELECT title, year, rating, name 
 FROM movies
 JOIN studios ON movies.studio_id = studios.id
 ;
