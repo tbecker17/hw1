@@ -114,14 +114,6 @@ DROP TABLE IF EXISTS studios;
 -- Create new tables, according to your domain model
 -- TODO!
 
-CREATE TABLE characters (
-    actor_id INTEGER,
-    movie_id INTEGER,
-    character_name TEXT,
-    FOREIGN KEY(actor_id) REFERENCES actors(id),
-    FOREIGN KEY(movie_id) REFERENCES movies(id)
-);
-
 CREATE TABLE actors (
     id INTEGER PRIMARY KEY,
     name TEXT
@@ -139,6 +131,14 @@ CREATE TABLE movies (
 CREATE TABLE studios (
     id INTEGER PRIMARY KEY,
     name TEXT
+);
+
+CREATE TABLE characters (
+    actor_id INTEGER,
+    movie_id INTEGER,
+    character_name TEXT,
+    FOREIGN KEY(actor_id) REFERENCES actors(id),
+    FOREIGN KEY(movie_id) REFERENCES movies(id)
 );
 
 -- Insert data into your database that reflects the sample data shown above
@@ -232,3 +232,8 @@ JOIN studios ON movies.studio_id = studios.id
 
 -- The SQL statement for the cast output
 -- TODO!
+
+SELECT movies.title, characters.actor_name, characters.character_name
+FROM movies
+INNER JOIN characters ON movies.movie_id = characters.movie_id
+;
